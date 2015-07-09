@@ -5,3 +5,8 @@
 function Label(color){
 	this.color = color;
 }
+
+Label.prototype.toChar = function(){
+	var colorString = this.color + "";
+	return colorString.charAt(0).toUpperCase();
+}

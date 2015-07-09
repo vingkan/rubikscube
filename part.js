@@ -1,16 +1,104 @@
 /*
 * Constructor for Part class
 * Represents a single part of a Rubik's Cube (a miniature cube)
+* var up, down, front, back, left, right (label): label to put on designated part face, if no label, use null
+* var temp (boolean): the part is a temporary representation, part is a physical piece if false
 */
-function Part(labels, temp){
-	this.up = labels[0] || null;
-	this.down = labels[1] || null;
-	this.front = labels[2] || null;
-	this.back = labels[3] || null;
-	this.left = labels[4] || null;
-	this.right = labels[5] || null;
+function Part(up, down, front, back, left, right, temp){
+	this.type = null;
+	this.up = up || null;
+	this.down = down || null;
+	this.front = front || null;
+	this.back = back || null;
+	this.left = left || null;
+	this.right = right || null;
 	this.temp = temp || false;
-	this.last = new Part();
+	this.last = null;
+	//Initial method calls
+	this.updateType();
+	this.saveLastOrientation();
+}
+
+/*
+* Get label of part on a given face. Use this method instead of calling variable directly (e.g., this.up)
+* var face (string): face to return label from
+*/
+Part.prototype.getLabel = function(face){
+	var label = null;
+	switch(face){
+		case 'up':
+			label = this.up;
+			break;
+		case 'down':
+			label = this.down;
+			break;
+		case 'front':
+			label = this.front;
+			break;
+		case 'back':
+			label = this.back;
+			break;
+		case 'left':
+			label = this.left;
+			break;
+		case 'right':
+			label = this.right;
+			break;
+		default:
+			alert('Invalid Face.');
+			break;
+	}
+	return label;
+}
+
+/*
+* Saves the last orientation of the part as a temporary part representation
+*/
+Part.prototype.saveLastOrientation = function(){
+	var tempPart = new Part(this.up, this.down, this.front, this.back, this.left, this.right, true);
+	this.last = tempPart;
+}
+
+/*
+* Check labels of part and update type: center (1 label), edge (2 labels), or corner (3 labels)
+*/
+Part.prototype.updateType = function(){
+	var labels = 0;
+	if(this.up != null){
+		labels++;
+	}
+	if(this.down != null){
+		labels++;
+	}
+	if(this.front != null){
+		labels++;
+	}
+	if(this.back != null){
+		labels++;
+	}
+	if(this.left != null){
+		labels++;
+	}
+	if(this.right != null){
+		labels++;
+	}
+	switch(labels){
+		case 0:
+			this.type = 'not-painted';
+			break;
+		case 1:
+			this.type = 'center';
+			break;
+		case 2:
+			this.type = 'edge';
+			break;
+		case 3:
+			this.type = 'corner';
+			break;
+		default:
+			this.type = 'over-painted';
+			break;
+	}
 }
 
 /*
@@ -19,9 +107,8 @@ function Part(labels, temp){
 * var clockwise (boolean): rotate face clockwise, counter-clockwise if false
 */
 Part.prototype.rotate = function(face, clockwise){
-	//Save the part's last orientation in a temporary part
-	var lastOrientation = new Part({this.up, this.down, this.front, this.back, this.left, this.right}, true);
-	this.last = lastOrientation;
+	//Save the part's last orientation to refer to while rotating and in case a move needs to be undone
+	this.lastOrientation
 	//Rotate label values around focused face
 	if(clockwise){
 		switch(face){
