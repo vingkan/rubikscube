@@ -2,3 +2,32 @@ html,body{
 	margin: 0;
 	padding: 0;
 }
+
+div#cubeSpace{
+	border: 10px solid black;
+	padding: 5px;
+	width: 450px;
+	height: 600px;
+}
+
+div.face{
+	float: left;
+	margin: 5px;
+	background: black;
+	width: 135px;
+	height: 135px;
+	padding: 2.5px;
+}
+
+div.label{
+	float: left;
+	margin: 2.5px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background: white;
+	text-align: center;
+	font-family: "Open Sans";
+	font-size: 20px;
+	font-weight: bold;
+}
