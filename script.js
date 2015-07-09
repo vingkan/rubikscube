@@ -1,48 +1,59 @@
+/*
+* Creates and returns a standard Rubik's Cube in solved form
+*/
 function createRubiksCube(){
-	var labelColors = ['orange', 'red', 'green', 'blue', 'yellow', 'white'];
+	//HEADER: new Part('orange', 'red', 'green', 'blue', 'yellow', 'white', false)
 	var parts = [];
 	//Create center pieces
-		parts.push(new Part('orange', null, null, null, null, null, false));
-		parts.push(new Part(null, 'red', null, null, null, null, false));
-		parts.push(new Part(null, null, 'green', null, null, null, false));
-		parts.push(new Part(null, null, null, 'blue', null, null, false));
-		parts.push(new Part(null, null, null, null, 'yellow', null, false));
-		parts.push(new Part(null, null, null, null, null, 'white', false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
 	//Create edge pieces
 		//Orange Face
-		parts.push(new Part('orange', null, null, null, 'yellow', null, false));
-		parts.push(new Part('orange', null, null, null, null, 'white', false));
-		parts.push(new Part('orange', null, null, 'blue', null, null, false));
-		parts.push(new Part('orange', null, 'green', null, null, null, false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('blank'), false));
 		//Red Face
-		parts.push(new Part(null, 'red', null, 'green', null, null, false));
-		parts.push(new Part(null, 'red', null, null, null, 'white', false));
-		parts.push(new Part(null, 'red', null, null, 'yellow', null, false));
-		parts.push(new Part(null, 'red', null, 'blue', null, null, false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
 		//Green Face
-		parts.push(new Part(null, null, 'green', null, 'yellow', null, false));
-		parts.push(new Part('orange', null, 'green', null, null, null, false));
-		parts.push(new Part(null, null, 'green', null, null, 'white', false));
-		parts.push(new Part(null, 'red', 'green', null, null, null, false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('blank'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('red'), new Label('green'), new Label('blank'), new Label('blank'), new Label('blank'), false));
 		//Blue Face
-		parts.push(new Part('orange', null, null, 'blue', null, null, fsalse));
-		parts.push(new Part(null, null, null, 'blue', 'yellow', null, false));
-		parts.push(new Part(null, null, null, 'blue', null, 'white', false));
-		parts.push(new Part(null, 'red', null, 'blue', null, null, false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
 		//Yellow Face
-		parts.push(new Part('orange', null, null, null, null, 'yellow', false));
-		parts.push(new Part(null, null, null, null, 'blue', 'yellow', false));
-		parts.push(new Part(null, 'red', null, null, null, 'yellow', false));
-		parts.push(new Part(null, null, 'green', null, null, 'yellow', false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('yellow'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('yellow'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('yellow'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('yellow'), false));
 		//White Face
-		parts.push(new Part('orange', 'red', 'green', 'blue', 'yellow', 'white', false));
-		parts.push(new Part(null, null, null, 'blue', null, 'white', false));
-		parts.push(new Part(null, 'red', null, null, null, 'white', false));
-		parts.push(new Part(null, null, 'green', null, null, 'white', false));
-		parts.push(new Part('orange', null, null, null, null, 'white', false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
 	//Create corner pieces
-		//new Part(null, null, null, null, null, null, false)
-	/*var cube = new Cube({
-		new Part(up, down, front, back, left, right, false),
-	});*/
+		//Up Corners
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('yellow'), new Label('blank'), false));
+		//Down Corners
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('green'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blue'), new Label('yellow'), new Label('blank'), false));
+	//Create cube
+	var cube = new Cube(parts);
+	return cube;
 }

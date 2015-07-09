@@ -16,7 +16,6 @@ function Part(up, down, front, back, left, right, temp){
 	this.last = null;
 	//Initial method calls
 	this.updateType();
-	this.saveLastOrientation();
 }
 
 /*
@@ -64,22 +63,22 @@ Part.prototype.saveLastOrientation = function(){
 */
 Part.prototype.updateType = function(){
 	var labels = 0;
-	if(this.up != null){
+	if(this.up.color != 'blank'){
 		labels++;
 	}
-	if(this.down != null){
+	if(this.down.color != 'blank'){
 		labels++;
 	}
-	if(this.front != null){
+	if(this.front.color != 'blank'){
 		labels++;
 	}
-	if(this.back != null){
+	if(this.back.color != 'blank'){
 		labels++;
 	}
-	if(this.left != null){
+	if(this.left.color != 'blank'){
 		labels++;
 	}
-	if(this.right != null){
+	if(this.right.color != 'blank'){
 		labels++;
 	}
 	switch(labels){

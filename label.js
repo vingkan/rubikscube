@@ -3,7 +3,7 @@
 * Represents a single color on a part of a cube. Could be configured for labels other than colors...
 */
 function Label(color){
-	this.color = color;
+	this.color = color || null;
 }
 
 Label.prototype.toChar = function(){
