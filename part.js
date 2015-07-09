@@ -19,6 +19,13 @@ function Part(up, down, front, back, left, right, temp){
 }
 
 /*
+* Returns a string representation of the labels on the part's faces
+*/
+Part.prototype.toString = function(){
+	return"up: " + this.getLabel('up').toChar() + ", down: " + this.getLabel('down').toChar() + ", front: " + this.getLabel('front').toChar() + ", back: " + this.getLabel('back').toChar() + ", left: " + this.getLabel('left').toChar() + ", right: " + this.getLabel('right').toChar();
+}
+
+/*
 * Get label of part on a given face. Use this method instead of calling variable directly (e.g., this.up)
 * var face (string): face to return label from
 */
@@ -107,7 +114,7 @@ Part.prototype.updateType = function(){
 */
 Part.prototype.rotate = function(face, clockwise){
 	//Save the part's last orientation to refer to while rotating and in case a move needs to be undone
-	this.lastOrientation
+	this.saveLastOrientation();
 	//Rotate label values around focused face
 	if(clockwise){
 		switch(face){

@@ -6,7 +6,17 @@ function Label(color){
 	this.color = color || null;
 }
 
+/*
+* Returns the first letter of the label's color, '-' if blank
+*/
 Label.prototype.toChar = function(){
 	var colorString = this.color + "";
-	return colorString.charAt(0).toUpperCase();
+	var letter = "";
+	if(colorString == "blank"){
+		letter = '-';
+	}
+	else{
+		letter = colorString.charAt(0).toUpperCase();
+	}
+	return letter;
 }
