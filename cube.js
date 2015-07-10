@@ -29,6 +29,10 @@ Cube.prototype.getFace = function(face){
 	return partsArray;
 }
 
+/*
+* Selects and organizes all of the parts of a given face to prepare for output to the HTML visualizer
+* var face (string): the face to organize
+*/
 Cube.prototype.organizeFace = function(face){
 	var partsArray = this.getFace(face);
 	var borders = this.getBorders(face);
@@ -45,6 +49,10 @@ Cube.prototype.organizeFace = function(face){
 	return faceArray;
 }
 
+/*
+* Returns an array of the faces that share an edge with the given face on a cube in clockwise order starting with the top of the face box on the HTML visualizer
+* var face (string): the face to select
+*/
 Cube.prototype.getBorders = function(face){
 	var borders = [];
 	switch(face){
@@ -73,6 +81,10 @@ Cube.prototype.getBorders = function(face){
 	return borders;
 }
 
+/*
+* Finds a specific center part that is not blank on the given face
+* var face (string): the face to select
+*/
 Cube.prototype.findCenter = function(face1){
 	var target = null;
 	for(var i = 0; i < this.parts.length; i++){
@@ -87,6 +99,10 @@ Cube.prototype.findCenter = function(face1){
 	return target;
 }
 
+/*
+* Finds a specific edge part that is not blank on the given faces
+* var face1, face2 (string): the face to select
+*/
 Cube.prototype.findEdge = function(face1, face2){
 	var target = null;
 	for(var i = 0; i < this.parts.length; i++){
@@ -101,6 +117,10 @@ Cube.prototype.findEdge = function(face1, face2){
 	return target;
 }
 
+/*
+* Finds a specific corner part that is not blank on the given faces
+* var face1, face2, face3 (string): the face to select
+*/
 Cube.prototype.findCorner = function(face1, face2, face3){
 	var target = null;
 	for(var i = 0; i < this.parts.length; i++){
