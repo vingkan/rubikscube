@@ -51,7 +51,7 @@ Part.prototype.getLabel = function(face){
 			label = this.right;
 			break;
 		default:
-			alert('Invalid Face.');
+			console.log('Invalid Face.');
 			break;
 	}
 	return label;
@@ -155,7 +155,7 @@ Part.prototype.rotate = function(face, clockwise){
 				this.back = this.last.up;
 				break;
 			default:
-				alert("Invalid Face.");
+				console.log("Invalid Face.");
 				break;
 		}
 	}

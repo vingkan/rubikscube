@@ -23,6 +23,7 @@ Cube.prototype.getFace = function(face){
 	for(var i = 0; i < this.parts.length; i++){
 		if(this.parts[i].getLabel(face).color != 'blank'){
 			partsArray.push(this.parts[i]);
+			//console.log(this.parts[i].toString());
 		}
 	}
 	return partsArray;
@@ -32,15 +33,15 @@ Cube.prototype.organizeFace = function(face){
 	var partsArray = this.getFace(face);
 	var borders = this.getBorders(face);
 	var faceArray = [];
-		faceArray.push(this.findCorner(partsArray, borders[0], borders[3])); //TOP LEFT
-		faceArray.push(this.findEdge(partsArray, borders[0])); //TOP MIDDLE
-		faceArray.push(this.findCorner(partsArray, borders[0], borders[1])); //TOP RIGHT
-		faceArray.push(this.findEdge(partsArray, borders[3])); //LEFT MIDDLE
-		faceArray.push(this.findCenter(partsArray)); //CENTER
-		faceArray.push(this.findEdge(partsArray, borders[1])); //RIGHT MIDDLE
-		faceArray.push(this.findCorner(partsArray, borders[3], borders[2])); //BOTTOM LEFT
-		faceArray.push(this.findEdge(partsArray, borders[2])); //BOTTOM MIDDLE
-		faceArray.push(this.findCorner(partsArray, borders[1], borders[2])); //BOTTOM RIGHT
+		faceArray.push(this.findCorner(face, borders[0], borders[3])); //TOP LEFT
+		faceArray.push(this.findEdge(face, borders[0])); //TOP MIDDLE
+		faceArray.push(this.findCorner(face, borders[0], borders[1])); //TOP RIGHT
+		faceArray.push(this.findEdge(face, borders[3])); //LEFT MIDDLE
+		faceArray.push(this.findCenter(face)); //CENTER
+		faceArray.push(this.findEdge(face, borders[1])); //RIGHT MIDDLE
+		faceArray.push(this.findCorner(face, borders[3], borders[2])); //BOTTOM LEFT
+		faceArray.push(this.findEdge(face, borders[2])); //BOTTOM MIDDLE
+		faceArray.push(this.findCorner(face, borders[1], borders[2])); //BOTTOM RIGHT
 	return faceArray;
 }
 
@@ -72,44 +73,44 @@ Cube.prototype.getBorders = function(face){
 	return borders;
 }
 
-Cube.prototype.findCenter = function(partsArray){
+Cube.prototype.findCenter = function(face1){
 	var target = null;
-	for(var i = 0; i < partsArray.length; i++){
-		if(partsArray[i].type == 'center'){
-			target = partsArray[i];
+	for(var i = 0; i < this.parts.length; i++){
+		if(this.parts[i].type == 'center' && this.parts[i].getLabel(face1).color != 'blank'){
+			target = this.parts[i];
 		}
 	}
 	//CATCH ERROR
 	if(target == null){
-		console.log("Could not find Center part.");
+		console.log("Could not find " + face1 + " center part.");
 	}
 	return target;
 }
 
-Cube.prototype.findEdge = function(partsArray, edgeFace){
+Cube.prototype.findEdge = function(face1, face2){
 	var target = null;
-	for(var i = 0; i < partsArray.length; i++){
-		if(partsArray[i].type == 'edge' && partsArray[i].getLabel(edgeFace).color != 'blank'){
-			target = partsArray[i];
+	for(var i = 0; i < this.parts.length; i++){
+		if(this.parts[i].type == 'edge' && this.parts[i].getLabel(face1).color != 'blank' && this.parts[i].getLabel(face2).color != 'blank'){
+			target = this.parts[i];
 		}
 	}
 	//CATCH ERROR
 	if(target == null){
-		console.log("Could not find Edge part with " + edgeFace + ".");
+		console.log("Could not find Edge part with " + face1 + " and " + face2 + ".");
 	}
 	return target;
 }
 
-Cube.prototype.findCorner = function(partsArray, cornerFace1, cornerFace2){
+Cube.prototype.findCorner = function(face1, face2, face3){
 	var target = null;
-	for(var i = 0; i < partsArray.length; i++){
-		if(partsArray[i].type == 'corner' && partsArray[i].getLabel(cornerFace1).color != 'blank' && partsArray[i].getLabel(cornerFace2).color != 'blank'){
-			target = partsArray[i];
+	for(var i = 0; i < this.parts.length; i++){
+		if(this.parts[i].type == 'corner' && this.parts[i].getLabel(face1).color != 'blank' && this.parts[i].getLabel(face2).color != 'blank' && this.parts[i].getLabel(face3).color != 'blank'){
+			target = this.parts[i];
 		}
 	}
 	//CATCH ERROR
 	if(target == null){
-		console.log("Could not find Corner part.");
+		console.log("Could not find Corner part with " + face1 + ", " + face2 + ", and " + face3 + ".");
 	}
 	return target;
 }
@@ -122,7 +123,7 @@ Cube.prototype.findCorner = function(partsArray, cornerFace1, cornerFace2){
 Cube.prototype.rotate = function(face, clockwise){
 	var faceArray = this.getFace(face);
 	for(var i = 0; i < faceArray.length; i++){
-		this.parts[i].rotate(face, clockwise);
+		faceArray[i].rotate(face, clockwise);
 	}
 }
 
