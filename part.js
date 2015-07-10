@@ -6,12 +6,12 @@
 */
 function Part(up, down, front, back, left, right, temp){
 	this.type = null;
-	this.up = up || null;
-	this.down = down || null;
-	this.front = front || null;
-	this.back = back || null;
-	this.left = left || null;
-	this.right = right || null;
+	this.up = up;
+	this.down = down;
+	this.front = front;
+	this.back = back;
+	this.left = left;
+	this.right = right;
 	this.temp = temp || false;
 	this.last = null;
 	//Initial method calls
@@ -126,15 +126,15 @@ Part.prototype.rotate = function(face, clockwise){
 				break;
 			case 'down':
 				this.right = this.last.front;
-				this.back = this.last.right;
+				this.front = this.last.left;
 				this.left = this.last.back;
-				this.front = this.left;
+				this.back = this.right;
 				break;
 			case 'front':
 				this.up = this.last.left;
-				this.right = this.last.up;
-				this.down = this.last.right;
 				this.left = this.last.down;
+				this.down = this.last.right;
+				this.right = this.last.up;				
 				break;
 			case 'back':
 				this.up = this.last.right;
@@ -159,4 +159,5 @@ Part.prototype.rotate = function(face, clockwise){
 				break;
 		}
 	}
+	console.log("Changed [" + this.last.toString() + "] to [" + this.toString() + "]");
 }

@@ -18,7 +18,7 @@ function createRubiksCube(){
 		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
 		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('blank'), false));
 		//Red Face
-		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), false));
+		parts.push(new Part(new Label('blank'), new Label('red'), new Label('green'), new Label('blank'), new Label('blank'), new Label('blank'), false));
 		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
 		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
 		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('blank'), false));
@@ -38,16 +38,16 @@ function createRubiksCube(){
 		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('yellow'), false));
 		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('yellow'), false));
 		//White Face
-		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
-		parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
-		parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
-		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('red'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('blank'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('blank'), new Label('white'), false));
 	//Create corner pieces
 		//Up Corners
-		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
-		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
-		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
-		//DUPLICATE: parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('green'), new Label('blank'), new Label('yellow'), new Label('blank'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('blank'), new Label('white'), false));
+		parts.push(new Part(new Label('orange'), new Label('blank'), new Label('blank'), new Label('blue'), new Label('yellow'), new Label('blank'), false));
 		//Down Corners
 		parts.push(new Part(new Label('blank'), new Label('red'), new Label('green'), new Label('blank'), new Label('blank'), new Label('white'), false));
 		parts.push(new Part(new Label('blank'), new Label('red'), new Label('green'), new Label('blank'), new Label('yellow'), new Label('blank'), false));

@@ -20,3 +20,10 @@ Label.prototype.toChar = function(){
 	}
 	return letter;
 }
+
+/*
+* Returns HTML representation of label, div of class "label"
+*/
+Label.prototype.toHTML = function(type){
+	return '<div class="label" style="background: ' + this.color + ';">' + this.toChar() + '<div class="partType">' + type + '</div></div>';
+}
