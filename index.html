@@ -6,8 +6,10 @@
 
 <!-- Add CSS files here -->
 <link rel="stylesheet" type="text/css" href="style.css">
+<!-- Imported -->
 <link rel="stylesheet" type="text/css" href="3d.css">
 <link rel="stylesheet" type="text/css" href="rotateCube.css">
+<link rel="stylesheet" type="text/css" href="views.css">
 
 <!-- Add JavaScript files here -->
 <script type="text/javascript" src="label.js"></script>
@@ -23,31 +25,28 @@
 <body>
 
 	<section class="visualizer">
-		<div id="cubeSpace" class="show-front">
-			<figure class="face" id="face-front">1</figure>
-			<figure class="face" id="face-back">2</figure>
-			<figure class="face" id="face-right">3</figure>
-			<figure class="face" id="face-left">4</figure>
-			<figure class="face" id="face-up">5</figure>
-			<figure class="face" id="face-down">6</figure>
+		<div id="cubeSpace" class="show-corner1">
+			<figure class="face" id="face-front">Front</figure>
+			<figure class="face" id="face-back">Back</figure>
+			<figure class="face" id="face-right">Right</figure>
+			<figure class="face" id="face-left">Left</figure>
+			<figure class="face" id="face-up">Up</figure>
+			<figure class="face" id="face-down">Down</figure>
 		</div>
 	</section>
 
 	 <section id="options">
 
 	    <p id="show-buttons">
-	      <button class="show-front">Show 1</button>
-	      <button class="show-back">Show 2</button>
-	      <button class="show-right">Show 3</button>
-	      <button class="show-left">Show 4</button>
-	      <button class="show-top">Show 5</button>
-	      <button class="show-bottom">Show 6</button>
+	      <button class="show-corner1">1</button>
+	      <button class="show-corner2">2</button>
+	      <button class="show-corner3">3</button>
+	      <button class="show-corner4">4</button>
+	      <button class="show-corner5">5</button>
+	      <button class="show-corner6">6</button>
+	      <button class="show-corner7">7</button>
+	      <button class="show-corner8">8</button>
 	    </p>
-
-	    <p>
-	      <button id="toggle-backface-visibility">Toggle Backface Visibility</button>
-	    </p>
-
 
 	  </section>
 

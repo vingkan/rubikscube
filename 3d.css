@@ -3,7 +3,7 @@
     height: 200px;
     position: relative;
     margin: 0 auto 40px;
-    border: 1px solid #CCC;
+    /*border: 1px solid #CCC;*/
     -webkit-perspective: 1000px;
        -moz-perspective: 1000px;
          -o-perspective: 1000px;
@@ -27,9 +27,10 @@
   #cubeSpace figure {
     display: block;
     position: absolute;
-    width: 196px;
-    height: 196px;
-    border: 2px solid black;
+    width: 195px;
+    height: 195px;
+    padding: 2.5px;
+    /*border: 2px solid black;*/
     line-height: 196px;
     font-size: 120px;
     font-weight: bold;
@@ -88,7 +89,7 @@
             transform: rotateX(  -90deg ) translateZ( 100px );
   }
 
-  #cubeSpace.show-front {
+  /*#cubeSpace.show-front {
     -webkit-transform: translateZ( -100px ) rotateX( 0deg );
        -moz-transform: translateZ( -100px ) rotateX( 0deg );
          -o-transform: translateZ( -100px ) rotateX( 0deg );
@@ -123,6 +124,13 @@
        -moz-transform: translateZ( -100px ) rotateX(   90deg );
          -o-transform: translateZ( -100px ) rotateX(   90deg );
             transform: translateZ( -100px ) rotateX(   90deg );
-  }
+  }*/
+
+  /*#cubeSpace.show-custom {
+    -webkit-transform: translateZ( -100px ) rotateX(   135deg ) rotateY(45deg);
+       -moz-transform: translateZ( -100px ) rotateX(   135deg ) rotateY(45deg);
+         -o-transform: translateZ( -100px ) rotateX(   135deg ) rotateY(45deg);
+            transform: translateZ( -100px ) rotateX(   135deg ) rotateY(45deg);
+  }*/
 
   #cubeSpace { transition: transform 2s; }
