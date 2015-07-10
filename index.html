@@ -4,32 +4,52 @@
 
 <title>Rubik's Cube Simulator</title>
 
+<!-- Add CSS files here -->
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="3d.css">
+<link rel="stylesheet" type="text/css" href="rotateCube.css">
 
 <!-- Add JavaScript files here -->
 <script type="text/javascript" src="label.js"></script>
 <script type="text/javascript" src="part.js"></script>
 <script type="text/javascript" src="cube.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<!-- Imported -->
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="rotateCube.js"></script>
 
 </head>
 
 <body>
 
-	<div id="cubeSpace">
-		<div class="face"></div>
-		<div class="face" id="face-back"></div>
-		<div class="face"></div>
-		<div class="face" id="face-left"></div>
-		<div class="face" id="face-up"></div>
-		<div class="face" id="face-right"></div>
-		<div class="face"></div>
-		<div class="face" id="face-front"></div>
-		<div class="face"></div>
-		<div class="face"></div>
-		<div class="face" id="face-down"></div>
-		<div class="face"></div>
-	</div>
+	<section class="visualizer">
+		<div id="cubeSpace" class="show-front">
+			<figure class="face" id="face-front">1</figure>
+			<figure class="face" id="face-back">2</figure>
+			<figure class="face" id="face-right">3</figure>
+			<figure class="face" id="face-left">4</figure>
+			<figure class="face" id="face-up">5</figure>
+			<figure class="face" id="face-down">6</figure>
+		</div>
+	</section>
+
+	 <section id="options">
+
+	    <p id="show-buttons">
+	      <button class="show-front">Show 1</button>
+	      <button class="show-back">Show 2</button>
+	      <button class="show-right">Show 3</button>
+	      <button class="show-left">Show 4</button>
+	      <button class="show-top">Show 5</button>
+	      <button class="show-bottom">Show 6</button>
+	    </p>
+
+	    <p>
+	      <button id="toggle-backface-visibility">Toggle Backface Visibility</button>
+	    </p>
+
+
+	  </section>
 
 	<script>
 
@@ -41,3 +61,20 @@
 </body>
 
 </html>
+
+<!--
+
+blank
+<figure class="face" id="face-back"></figure>
+blank
+<figure class="face" id="face-left"></figure>
+<figure class="face" id="face-up"></figure>
+<figure class="face" id="face-right"></figure>
+blank
+<figure class="face" id="face-front"></figure>
+blank
+blank
+<figure class="face" id="face-down"></figure>
+blank
+
+	-->
