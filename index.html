@@ -6,10 +6,11 @@
 
 <!-- Add CSS files here -->
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="views.css">
 <!-- Imported -->
 <link rel="stylesheet" type="text/css" href="3d.css">
 <link rel="stylesheet" type="text/css" href="rotateCube.css">
-<link rel="stylesheet" type="text/css" href="views.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,700' rel='stylesheet' type='text/css'>
 
 <!-- Add JavaScript files here -->
 <script type="text/javascript" src="label.js"></script>
@@ -23,6 +24,8 @@
 </head>
 
 <body>
+
+	<div id="header">Rubik's Cube Engine</div>
 
 	<section class="visualizer">
 		<div id="cubeSpace" class="show-corner1">
@@ -38,14 +41,14 @@
 	 <section id="options">
 
 	    <p id="show-buttons">
-	      <button class="show-corner1">1</button>
-	      <button class="show-corner2">2</button>
-	      <button class="show-corner3">3</button>
-	      <button class="show-corner4">4</button>
-	      <button class="show-corner5">5</button>
-	      <button class="show-corner6">6</button>
-	      <button class="show-corner7">7</button>
-	      <button class="show-corner8">8</button>
+	      <button class="show-corner1">1<div class="viewLabel"><div class="down-arrow"></div>Up/Front/Right</div></button>
+	      <button class="show-corner2">2<div class="viewLabel"><div class="down-arrow"></div>Up/Front/Left</div></button>
+	      <button class="show-corner3">3<div class="viewLabel"><div class="down-arrow"></div>Up/Back/Left</div></button>
+	      <button class="show-corner4">4<div class="viewLabel"><div class="down-arrow"></div>Up/Back/Right</div></button>
+	      <button class="show-corner5">5<div class="viewLabel"><div class="down-arrow"></div>Down/Back/Left</div></button>
+	      <button class="show-corner6">6<div class="viewLabel"><div class="down-arrow"></div>Down/Back/Right</div></button>
+	      <button class="show-corner7">7<div class="viewLabel"><div class="down-arrow"></div>Down/Front/Right</div></button>
+	      <button class="show-corner8">8<div class="viewLabel"><div class="down-arrow"></div>Down/Front/Left</div></button>
 	    </p>
 
 	  </section>

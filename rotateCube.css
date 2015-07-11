@@ -23,11 +23,11 @@ a:hover {
   color: white;
 }
 
-#options {
+/*#options {
   position: relative;
   z-index: 100;
   margin-bottom: 40px;
-}
+}*/
 
 button {
   font-size: 16px;
