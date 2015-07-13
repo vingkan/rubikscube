@@ -63,6 +63,7 @@ Part.prototype.getLabel = function(face){
 Part.prototype.saveLastOrientation = function(){
 	var tempPart = new Part(this.up, this.down, this.front, this.back, this.left, this.right, true);
 	this.last = tempPart;
+	console.log("Saved: " + this.toString());
 }
 
 /*
@@ -122,13 +123,13 @@ Part.prototype.rotate = function(face, clockwise){
 				this.left = this.last.front;
 				this.back = this.last.left;
 				this.right = this.last.back;
-				this.front = this.left;
+				this.front = this.last.right;
 				break;
 			case 'down':
 				this.right = this.last.front;
 				this.front = this.last.left;
 				this.left = this.last.back;
-				this.back = this.right;
+				this.back = this.last.right;
 				break;
 			case 'front':
 				this.up = this.last.left;
@@ -153,6 +154,49 @@ Part.prototype.rotate = function(face, clockwise){
 				this.front = this.last.down;
 				this.down = this.last.back;
 				this.back = this.last.up;
+				break;
+			default:
+				console.log("Invalid Face.");
+				break;
+		}
+	}
+	else{
+		switch(face){
+			case 'up':
+				this.left = this.last.back;
+				this.back = this.last.right;
+				this.right = this.last.front;
+				this.front = this.last.left;
+				break;
+			case 'down':
+				this.right = this.last.back;
+				this.front = this.last.right;
+				this.left = this.last.front;
+				this.back = this.last.left;
+				break;
+			case 'front':
+				this.up = this.last.right;
+				this.left = this.last.up;
+				this.down = this.last.left;
+				this.right = this.last.down;				
+				break;
+			case 'back':
+				this.up = this.last.left;
+				this.right = this.last.up;
+				this.down = this.last.right;
+				this.left = this.last.down;
+				break;
+			case 'left':
+				this.up = this.last.front;
+				this.back = this.last.up;
+				this.down = this.last.back;
+				this.front = this.last.down;
+				break;
+			case 'right':
+				this.up = this.last.back;
+				this.front = this.last.up;
+				this.down = this.last.front;
+				this.back = this.last.down;
 				break;
 			default:
 				console.log("Invalid Face.");
