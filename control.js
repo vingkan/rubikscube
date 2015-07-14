@@ -3,6 +3,11 @@ function rotate(face, clockwise){
 	cube.draw();
 }
 
+function outStream(log){
+	var outBox = document.getElementById('outBox');
+		outBox.value += log + '\n';
+}
+
 function inStream(){
 	var inBox = document.getElementById('inBox');
 	var text = inBox.value;
@@ -22,7 +27,8 @@ function inStream(){
 			command = "";
 	}
 	runCommands(commands);
-	console.log(commands);
+	//console.log(commands);
+	inBox.value = '';
 }
 
 function runCommands(commands){
@@ -31,14 +37,20 @@ function runCommands(commands){
 	var clockwise = true;
 	for(var i = 0; i < commands.length; i++){
 		key = commands[i].charAt(0).toLowerCase();
-		console.log('Key: ' + key);
+		//console.log('Key: ' + key);
 		face = selectFace(key);
-		console.log('Face: ' + face);
+		//console.log('Face: ' + face);
 		if(commands[i].length > 1 && commands[i].charAt(1) == 'i'){
 			clockwise = false;
 		}
 		if(face != null){
-			setTimeout(function(){rotate(face, clockwise)}, 500);
+			rotate(face, clockwise);
+			if(clockwise){
+				outStream("Rotate " + face + " face clockwise.");
+			}
+			else{
+				outStream("Rotate " + face + " face counter-clockwise.");
+			}
 		}
 		key = '';
 		face = '';
@@ -51,7 +63,7 @@ function selectFace(key){
 	var face = null;
 	for(var i = 0; i < faces.length; i++){
 		if(key == faces[i].charAt(0)){
-			console.log(key + " == " + faces[i].charAt(0));
+			//console.log(key + " == " + faces[i].charAt(0));
 			face = faces[i];
 		}
 	}

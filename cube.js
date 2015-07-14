@@ -168,7 +168,7 @@ Cube.prototype.drawFace = function(face){
 		faceDivSquare.innerHTML = "";
 	var faceParts = this.organizeFace(face);
 	for(var i = 0; i < faceParts.length; i++){
-		faceDiv.innerHTML += faceParts[i].getLabel(face).toHTML(faceParts[i].type);
-		faceDivSquare.innerHTML += faceParts[i].getLabel(face).toHTML(faceParts[i].type);
+		faceDiv.innerHTML += faceParts[i].getLabel(face).toHTML(faceParts[i].type, true);
+		faceDivSquare.innerHTML += faceParts[i].getLabel(face).toHTML(faceParts[i].type, false);
 	}
 }

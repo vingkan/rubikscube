@@ -26,7 +26,23 @@
 
 <body>
 
-	<div id="header">Rubik's Cube Engine</div>
+	<div id="header">
+		Rubik's Cube Engine
+		<div id="unfoldedView">
+			<div class="faceSquare"></div>
+			<div class="faceSquare" id="faceSquare-back">Back</div>
+			<div class="faceSquare"></div>
+			<div class="faceSquare" id="faceSquare-left" style="transform: rotate(90deg);">Left</div>
+			<div class="faceSquare" id="faceSquare-up">Up</div>
+			<div class="faceSquare" id="faceSquare-right" style="transform: rotate(-90deg);">Right</div>
+			<div class="faceSquare"></div>
+			<div class="faceSquare" id="faceSquare-front">Front</div>
+			<div class="faceSquare"></div>
+			<div class="faceSquare"></div>
+			<div class="faceSquare" id="faceSquare-down">Down</div>
+			<div class="faceSquare"></div>
+		</div>
+	</div>
 
 	<section class="visualizer">
 		<div id="cubeSpace" class="show-corner1">
@@ -55,17 +71,13 @@
 	  </section>
 
 	  <div class="container">
-	  		<textarea class="console" id="inBox"></textarea>
-	  		<input type="button" onclick="inStream();">
+	  		<input class="console" type="text" id="inBox">
+	  		<button onclick="inStream();">&#8634;</button>
 	  		<textarea class="console" id="outBox"></textarea>
 	  </div>
 
-		<div class="face" id="faceSquare-front">Front</div>
-		<div class="face" id="faceSquare-back">Back</div>
-		<div class="face" id="faceSquare-right">Right</div>
-		<div class="face" id="faceSquare-left">Left</div>
-		<div class="face" id="faceSquare-up">Up</div>
-		<div class="face" id="faceSquare-down">Down</div>
+
+
 
 	<script>
 
