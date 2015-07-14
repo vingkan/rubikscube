@@ -17,9 +17,12 @@ function inStream(){
 			command = "";
 		}
 	}
+	if(command != ' '){
 			commands.push(command);
 			command = "";
+	}
 	runCommands(commands);
+	console.log(commands);
 }
 
 function runCommands(commands){
@@ -28,7 +31,9 @@ function runCommands(commands){
 	var clockwise = true;
 	for(var i = 0; i < commands.length; i++){
 		key = commands[i].charAt(0).toLowerCase();
+		console.log('Key: ' + key);
 		face = selectFace(key);
+		console.log('Face: ' + face);
 		if(commands[i].length > 1 && commands[i].charAt(1) == 'i'){
 			clockwise = false;
 		}
@@ -46,6 +51,7 @@ function selectFace(key){
 	var face = null;
 	for(var i = 0; i < faces.length; i++){
 		if(key == faces[i].charAt(0)){
+			console.log(key + " == " + faces[i].charAt(0));
 			face = faces[i];
 		}
 	}

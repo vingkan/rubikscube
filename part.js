@@ -22,7 +22,7 @@ function Part(up, down, front, back, left, right, temp){
 * Returns a string representation of the labels on the part's faces
 */
 Part.prototype.toString = function(){
-	return"up: " + this.getLabel('up').toChar() + ", down: " + this.getLabel('down').toChar() + ", front: " + this.getLabel('front').toChar() + ", back: " + this.getLabel('back').toChar() + ", left: " + this.getLabel('left').toChar() + ", right: " + this.getLabel('right').toChar();
+	return "up: " + this.getLabel('up').toChar() + ", down: " + this.getLabel('down').toChar() + ", front: " + this.getLabel('front').toChar() + ", back: " + this.getLabel('back').toChar() + ", left: " + this.getLabel('left').toChar() + ", right: " + this.getLabel('right').toChar();
 }
 
 /*
@@ -51,7 +51,7 @@ Part.prototype.getLabel = function(face){
 			label = this.right;
 			break;
 		default:
-			console.log('Invalid Face.');
+			console.log(face + ' is an Invalid Face.');
 			break;
 	}
 	return label;
@@ -63,7 +63,7 @@ Part.prototype.getLabel = function(face){
 Part.prototype.saveLastOrientation = function(){
 	var tempPart = new Part(this.up, this.down, this.front, this.back, this.left, this.right, true);
 	this.last = tempPart;
-	console.log("Saved: " + this.toString());
+	//console.log("Saved: " + this.toString());
 }
 
 /*
@@ -114,6 +114,7 @@ Part.prototype.updateType = function(){
 * var clockwise (boolean): rotate face clockwise, counter-clockwise if false
 */
 Part.prototype.rotate = function(face, clockwise){
+	this.checkDuplicateLabels('Start of Rotation...');
 	//Save the part's last orientation to refer to while rotating and in case a move needs to be undone
 	this.saveLastOrientation();
 	//Rotate label values around focused face
@@ -203,5 +204,30 @@ Part.prototype.rotate = function(face, clockwise){
 				break;
 		}
 	}
-	console.log("Changed [" + this.last.toString() + "] to [" + this.toString() + "]");
+	this.checkDuplicateLabels('End of Rotation...');
+	//console.log("Changed [" + this.last.toString() + "] to [" + this.toString() + "]");
+}
+
+Part.prototype.checkDuplicateLabels = function(location){
+	var colors = [];
+	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
+	var coloredLabels = 0;
+	for(var i = 0; i < faces.length; i++){
+		coloredLabels = this.checkColor(this.getLabel(faces[i]).color);
+		if(coloredLabels > 1){
+			console.log(location + " " + faces[i] + " has " + coloredLabels + " duplicate labels.");
+		}
+	}
+
+}
+
+Part.prototype.checkColor = function(array, color){
+	var coloredLabels = 0;
+	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
+	for(var i = 0; i < faces.length; i++){
+		if(this.getLabel(faces[i]).color == color){
+			coloredLabels++;
+		}
+	}
+	return coloredLabels;
 }

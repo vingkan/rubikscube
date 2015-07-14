@@ -69,10 +69,10 @@ Cube.prototype.getBorders = function(face){
 			borders = ['down', 'right', 'up', 'left'];
 			break;
 		case 'left':
-			borders = ['back', 'up', 'front', 'down'];
+			borders = ['up', 'front', 'down', 'back'];
 			break;
 		case 'right':
-			borders = ['back', 'down', 'front', 'up'];
+			borders = ['up', 'back', 'down', 'front'];
 			break;
 		default:
 			alert('Invalid Face.');
@@ -163,9 +163,12 @@ Cube.prototype.draw = function(){
 */
 Cube.prototype.drawFace = function(face){
 	var faceDiv = document.getElementById('face-' + face);
+	var faceDivSquare = document.getElementById('faceSquare-' + face);
 		faceDiv.innerHTML = "";
+		faceDivSquare.innerHTML = "";
 	var faceParts = this.organizeFace(face);
 	for(var i = 0; i < faceParts.length; i++){
 		faceDiv.innerHTML += faceParts[i].getLabel(face).toHTML(faceParts[i].type);
+		faceDivSquare.innerHTML += faceParts[i].getLabel(face).toHTML(faceParts[i].type);
 	}
 }
