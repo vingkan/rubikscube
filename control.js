@@ -70,8 +70,6 @@ function selectFace(key){
 	return face;
 }
 
-function()
-
 function randomRotation(){
 	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
 	var random = Math.floor((Math.random() * faces.length) + 0);

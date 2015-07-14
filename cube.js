@@ -29,6 +29,32 @@ Cube.prototype.getFace = function(face){
 	return partsArray;
 }
 
+Cube.prototype.checkSolved = function(){
+	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
+	var faceColor = null;
+	var faceParts = [];
+	var faceSolved = true;
+	var solved = [];
+	for(var i = 0; i < faces.length; i++){
+		faceColor = this.findCenter(faces[i]).getLabel(faces[i]).color;
+		faceParts = this.getFace(faces[i]);
+		for(var p = 0; p < faceParts.length; p++){
+			if(faceColor != faceParts[p].getLabel(faces[i]).color){
+				faceSolved = false;
+			}
+		}
+		solved.push(faceSolved);
+		faceSolved = true;
+	}
+	var allSolved = true;
+	for(var b = 0; b < solved.length; b++){
+		if(!solved[b]){
+			allSolved = false;
+		}
+	}
+	return allSolved;
+}
+
 /*
 * Selects and organizes all of the parts of a given face to prepare for output to the HTML visualizer
 * var face (string): the face to organize
