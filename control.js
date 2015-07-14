@@ -69,3 +69,22 @@ function selectFace(key){
 	}
 	return face;
 }
+
+function()
+
+function randomRotation(){
+	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
+	var random = Math.floor((Math.random() * faces.length) + 0);
+	var face = faces[random];
+	var clockwise = false;
+	if(random > 2){
+		clockwise = true;
+	}
+	rotate(face, clockwise);
+}
+
+function scramble(rotations){
+	for(var i = 0; i < rotations; i++){
+		randomRotation();
+	}
+}

@@ -10,6 +10,38 @@ html{
 	background: url('diagmonds.png');
 }
 
+	::-webkit-scrollbar{
+		width: 10px;
+		height: 10px;
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-button{
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-track{
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-track-piece{
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb{
+		background: rgba(255, 255, 255, 1.0);
+	}
+
+	::-webkit-scrollbar-corner{
+		width: 10px;
+		height: 10px;
+		background: transparent;
+	}
+
+	::-webkit-resizer{
+		background: transparent;
+	}
+
 div#header{
 	width: 600px;
 	height: 50px;
@@ -23,6 +55,15 @@ div#header{
 	font-family: "Oswald";
 	font-size: 25px;
 }
+
+	div#header address{
+		font-family: "Open Sans";
+		font-size: 7.5px;
+		line-height: 10px;
+		text-align: right;
+		margin: -40px 0 0 0;
+		color: #AAAAAA;
+	}
 
 section.visualizer{
 	margin-top: 75px;
@@ -109,8 +150,8 @@ div.container{
 div.container input{
 	background: black;
 	color: white;
-	width: 525px;
-	max-width: 525px;
+	width: 385px;
+	max-width: 385px;
 	height: 50px;
 	line-height: 30px;
 	outline: none;
@@ -154,12 +195,21 @@ div.container button{
 	font-family: "Oswald";
 	font-weight: bold;
 	font-size: 25px;
-	transition: background 2s;
 }
 
 	div.container button:hover{
 		background: black;
 		color: white;
+	}
+
+	div.container div.viewLabel{
+		margin-top: -80px;
+		margin-left: -30px;
+		font-weight: normal;
+	}
+
+	div.container button:hover div.viewLabel, div.container button:hover div.down-arrow{
+		display: block;
 	}
 
 div#unfoldedView{
