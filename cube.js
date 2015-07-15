@@ -162,6 +162,43 @@ Cube.prototype.findCorner = function(face1, face2, face3){
 }
 
 /*
+* Returns all parts of a given type as an array
+* var type (string): the type of part to return ('center', 'edge', 'corner')
+*/
+Cube.prototype.findByType = function(type){
+	var typeParts = [];
+	for(var i = 0; i < this.parts.length; i++){
+		if(this.parts[i].type == type){
+			typeParts.push(this.parts[i]);
+		}
+	}
+	return typeParts;
+}
+
+/*
+* Finds a part of a given type with faces of the given colors
+* var type (string): the type of part to return ('center', 'edge', 'corner')
+* var colors (color[]): the colors to check for, all must be matched
+*/
+Cube.prototype.findByColors = function(type, colors){
+	var target = null;
+	var typeParts = this.findByType(type);
+	var colorsIncluded = 0;
+	for(var t = 0; t < typeParts.length; t++){
+		colorsIncluded = 0;
+		for(var c = 0; c < colors.length; c++){
+			if(typeParts[t].hasColor(colors[c])){
+				colorsIncluded++;
+			}
+		}
+		if(colorsIncluded == colors.length){
+			target = typeParts[t];
+		}
+	}
+	return target;
+}
+
+/*
 * Basic method to rotate a face of a cube with respect to basic directions
 * var face (string): the face to be rotated
 * var clockwise (boolean): rotate face clockwise, counter-clockwise if false

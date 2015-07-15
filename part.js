@@ -109,6 +109,33 @@ Part.prototype.updateType = function(){
 }
 
 /*
+* Checks all faces of a part to see if any labels are of a given color
+* var color (color): the color to check for
+*/
+Part.prototype.hasColor = function(color){
+	var included = false;
+	if(this.up.color == color){
+		included = true;
+	}
+	if(this.down.color == color){
+		included = true;
+	}
+	if(this.front.color == color){
+		included = true;
+	}
+	if(this.back.color == color){
+		included = true;
+	}
+	if(this.left.color == color){
+		included = true;
+	}
+	if(this.right.color == color){
+		included = true;
+	}
+	return included;
+}
+
+/*
 * Basic method to rotate the orientation of a part with respect to basic directions
 * var face (string): the face to be rotated
 * var clockwise (boolean): rotate face clockwise, counter-clockwise if false
