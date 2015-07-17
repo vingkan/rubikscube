@@ -180,6 +180,7 @@ div.container textarea{
 	textarea#outBox{
 		line-height: 15px;
 		font-size: 10px;
+		margin-bottom: 50px;
 	}
 
 div.container button{

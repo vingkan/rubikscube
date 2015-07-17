@@ -108,6 +108,38 @@ Cube.prototype.getBorders = function(face){
 }
 
 /*
+* Returns the face on the cube opposite the given face
+* var face (string): the face to select
+*/
+Cube.prototype.getOppositeFace = function(face){
+	var opposite = null;
+	switch(face){
+		case 'up':
+			opposite = 'down';
+			break;
+		case 'down':
+			opposite = 'up';
+			break;
+		case 'front':
+			opposite = 'back';
+			break;
+		case 'back':
+			opposite = 'front';
+			break;
+		case 'left':
+			opposite = 'right';
+			break;
+		case 'right':
+			opposite = 'front';
+			break;
+		default:
+			console.log(face + ' is an Invalid Face.');
+			break;
+	}
+	return opposite;
+}
+
+/*
 * Finds a specific center part that is not blank on the given face
 * var face (string): the face to select
 */
