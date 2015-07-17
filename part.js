@@ -285,3 +285,22 @@ Part.prototype.checkColor = function(array, color){
 	}
 	return coloredLabels;
 }
+
+/*
+* Checks the labels on the given faces and determines if the number of faces specified are non-blank (labeled)
+* var faces (string[]): the faces to check
+* var matches (int): the number of faces that must be non-blank to be considered labeled
+*/
+Part.prototype.hasLabels = function(faces, matches){
+	var labeled = false;
+	var labels = 0;
+	for(var f = 0; f < faces.length; f++){
+		if(this.getLabel(faces[f]).color != 'blank'){
+		labels++;
+		}
+	}
+	if(labels >= matches){
+		labeled = true;
+	}
+	return labeled;
+}

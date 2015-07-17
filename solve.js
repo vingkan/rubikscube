@@ -14,8 +14,8 @@ function solveCross(){
 	var targetPart = null;
 	var targetColorFace = null;
 	var edgeColorFace = null;
-	for(var f = 0; f < borders.length; f++){
-		//var f = 1; //Work with Up/right Edge Part
+	//for(var f = 0; f < borders.length; f++){
+		var f = 1; //Work with Up/right Edge Part
 		//Remove when recreating loop
 		edgeFace = borders[f];
 		edgeColor = cube.findCenter(edgeFace).getLabel(edgeFace).color;
@@ -26,52 +26,34 @@ function solveCross(){
 		edgeColorFace = targetPart.getFaceByColor(edgeColor);
 			console.log("Edge Color is on the " + edgeColorFace + " face.");
 		//Begin Manipulation
-		//Move target part to either the center face or the edge face
-		if(targetPart.getLabel(face) == 'blank' || targetPart.getLabel(edgeFace) == 'blank'){
-			while(targetPart.getLabel(face) == 'blank'){
-					console.log("Target is not on either active face: " + face + " or " + edgeFace + ".");
-				rotate(targetPart.getFaceByColor(centerColor), true);
-			}
-		}
-		//Rotate part into position: simple
-		if(targetPart.getFaceByColor(edgeColor) == borders[f]){
-			while(targetPart.getFaceByColor(centerColor) != face){
-					console.log("Simple Position: Target color is on " + targetPart.getFaceByColor(centerColor) + " and needs to be on " + face + ".");
-				rotate(borders[f], true);
-			}
-		}
-		//Rotate part into flipped position and then run algorithm
-		else{
-			var broken = false;
-			var counter = 0;
-			while(targetPart.getFaceByColor(centerColor) != edgeFace){
-					console.log("Simple Flipping: Target color is on " + targetPart.getFaceByColor(centerColor) + " and needs to be on " + edgeFace + ".");
-				rotate(face, true);
-				counter++;
-				if(counter == 4){
-					broken = true;
-					break;
-				}
-			}
-			if(broken){
-				console.log("We fucked up.");
-				break;
-			}
-			while(targetPart.getFaceByColor(centerColor) != face){
-				console.log("Flipping Algorithm: Target color is on " + targetPart.getFaceByColor(centerColor) + " and needs to be on " + face + ".");
-				runCommands(["Ri", "U", "Fi", "Ui"]);
-			}
-		}
-		console.log("Placed the " + centerColor + " with the " + edgeColor + " edge.\nEND");
-		alert("PAUSE");
-	}
+		
+	//} //End of Loop
 
 }
 
 /*
-*
+* Algorithm I: Flip a reversed edge part in the correct position to match correctly to the boundary centers
+* 3D Specifications: Target face in the up position, Edge face in the right position
+* Repeat Note: This algorithm is only called once at a time
+* var targetFace (string): the target face
+* var edgeFace (string): the edge face
 */
-function flipEdge(){
-	var face = 'up';
+function flipEdge(targetFace, edgeFace){
+	//runCommands(["Ri", "U", "Fi", "Ui"]);
+	var borders = cube.getBorders(targetFace);
+	var orientedUp = targetFace;
+	var orientedRight = edgeFace;
+	var edgeFaceIndex = 0;
+	for(var b = 0; b < borders.length; b++){
+		if(borders[b] == edgeFace){
+			edgeFaceIndex = b;
+			break;
+		}
+	}
+	var orientedFront = borders[edgeFaceIndex + 1];
+	rotate(orientedRight, false);
+	rotate(orientedUp, true);
+	rotate(orientedFront, false);
+	rotate(orientedUp, false);
 
 }
