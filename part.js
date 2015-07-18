@@ -296,7 +296,7 @@ Part.prototype.hasLabels = function(faces, matches){
 	var labels = 0;
 	for(var f = 0; f < faces.length; f++){
 		if(this.getLabel(faces[f]).color != 'blank'){
-		labels++;
+			labels++;
 		}
 	}
 	if(labels >= matches){

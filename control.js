@@ -1,6 +1,15 @@
-function rotate(face, clockwise){
+function rotate(face, clockwise, random){
+	var directions = random || true;
 	cube.rotate(face, clockwise);
 	cube.draw();
+	if(directions){
+		if(clockwise){
+			outStream("Rotate " + face + " face clockwise.");
+		}
+		else{
+			outStream("Rotate " + face + " face counter-clockwise.");
+		}
+	}
 }
 
 function outStream(log){
@@ -45,12 +54,6 @@ function runCommands(commands){
 		}
 		if(face != null){
 			rotate(face, clockwise);
-			if(clockwise){
-				outStream("Rotate " + face + " face clockwise.");
-			}
-			else{
-				outStream("Rotate " + face + " face counter-clockwise.");
-			}
 		}
 		key = '';
 		face = '';
@@ -78,7 +81,7 @@ function randomRotation(){
 	if(random > 2){
 		clockwise = true;
 	}
-	rotate(face, clockwise);
+	rotate(face, clockwise, false);
 }
 
 function scramble(rotations){
