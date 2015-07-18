@@ -5,7 +5,7 @@ function solve(){
 }
 
 function solveCross(){
-	var face = 'up';
+	var face = 'right';
 	var centerColor = cube.findCenter(face).getLabel(face).color;
 	var borders = cube.getBorders(face);
 	//UP: borders = ['back', 'right', 'front', 'left'];
@@ -63,20 +63,24 @@ console.log("BEGIN\nSearching for the " + centerColor + " with the " + edgeColor
 		}
 
 	} //End of Loop
-	//Check edges
+	//Check edges: TEMPORARY FIX
 	var correctFaces = 0;
 	for(var b = 0; b < borders.length; b++){
 		var faceCorrect = (cube.findEdge(face, borders[b]).getLabel(face).color == centerColor);
 		var edgeCorrect = (cube.findEdge(face, borders[b]).getLabel(borders[b]).color == cube.findCenter(borders[b]).getLabel(borders[b]).color);
-console.log(cube.findEdge(face, borders[b]).getLabel(borders[b]).color + '==' + cube.findCenter(borders[b]).getLabel(borders[b]).color)
+//console.log(cube.findEdge(face, borders[b]).getLabel(borders[b]).color + '==' + cube.findCenter(borders[b]).getLabel(borders[b]).color)
 		if(faceCorrect && edgeCorrect){
 			correctFaces++;
 		}
 		else{
-console.log('faceCorrect: ' + faceCorrect + ', edgeCorrect: ' + edgeCorrect);
+//console.log('faceCorrect: ' + faceCorrect + ', edgeCorrect: ' + edgeCorrect);
 		}
 	}
-console.log("CORRECT FACES: " + correctFaces + "\n");
+//console.log("CORRECT FACES: " + correctFaces + "\n");
+	if(correctFaces < 4){
+		alert("Needed multiple tries.");
+		solveCross();
+	}
 }
 
 /*
