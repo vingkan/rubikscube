@@ -1,11 +1,11 @@
 function solve(){
 	outStream("Start solution sequence.\n---");
-	solveCross();
+	solveCross('up');
 	outStream("---\nPsych. Solve feature currently in development.");
 }
 
-function solveCross(){
-	var face = 'right';
+function solveCross(face){
+	//var face = 'right';
 	var centerColor = cube.findCenter(face).getLabel(face).color;
 	var borders = cube.getBorders(face);
 	//UP: borders = ['back', 'right', 'front', 'left'];
