@@ -18,15 +18,36 @@ Cube.prototype.addPart = function(part){
 * Returns array of all parts with a non-blank label on the given face
 * var face (string): the face to select
 */
-Cube.prototype.getFace = function(face){
+Cube.prototype.getFace = function(face, getType){
+	var type = getType || 'any';
 	var partsArray = [];
 	for(var i = 0; i < this.parts.length; i++){
 		if(this.parts[i].getLabel(face).color != 'blank'){
-			partsArray.push(this.parts[i]);
+			if(type == 'any'){
+				partsArray.push(this.parts[i]);
+			}
+			else if(this.parts[i].isType(type)){
+				partsArray.push(this.parts[i]);
+			}
 			//console.log(this.parts[i].toString());
 		}
 	}
 	return partsArray;
+}
+
+Cube.prototype.getFaceColor = function(face){
+	return this.findCenter(face).getLabel(face).color;
+}
+
+Cube.prototype.getColorFace = function(color){
+	var response = '';
+	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
+	for(var f = 0; f < faces.length; f++){
+		if(this.getFaceColor(faces[f]) == color){
+			response = faces[f];
+		}
+	}
+	return response;
 }
 
 Cube.prototype.checkSolved = function(){

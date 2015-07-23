@@ -25,6 +25,14 @@ Part.prototype.toString = function(){
 	return "up: " + this.getLabel('up').toChar() + ", down: " + this.getLabel('down').toChar() + ", front: " + this.getLabel('front').toChar() + ", back: " + this.getLabel('back').toChar() + ", left: " + this.getLabel('left').toChar() + ", right: " + this.getLabel('right').toChar();
 }
 
+Part.prototype.isType = function(type){
+	var response = false;
+	if(this.type == type){
+		response = true;
+	}
+	return response;
+}
+
 /*
 * Get label of part on a given face. Use this method instead of calling variable directly (e.g., this.up)
 * var face (string): face to return label from
@@ -303,4 +311,18 @@ Part.prototype.hasLabels = function(faces, matches){
 		labeled = true;
 	}
 	return labeled;
+}
+
+Part.prototype.getEdgeFace = function(targetFace){
+	var edgeFace = '';
+	var faces = ['up', 'down', 'front', 'back', 'left', 'right'];
+	for(var f = 0; f < faces.length; f++){
+		if(this.getLabel(faces[f]).color != 'blank'){
+			edgeFace = faces[f];
+		}
+	}
+	if(!(this.isType('edge'))){
+		edgeFace = 'WRONG PART TYPE ERROR';
+	}
+	return edgeFace;
 }
