@@ -65,6 +65,17 @@ Part.prototype.getLabel = function(face){
 	return label;
 }
 
+Part.prototype.getAllLabels = function(){
+	var labels = [];
+		labels.push(this.up);
+		labels.push(this.down);
+		labels.push(this.front);
+		labels.push(this.back);
+		labels.push(this.left);
+		labels.push(this.right);
+	return labels;
+}
+
 /*
 * Saves the last orientation of the part as a temporary part representation
 */

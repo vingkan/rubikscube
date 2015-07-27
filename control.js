@@ -89,3 +89,20 @@ function scramble(rotations){
 		randomRotation();
 	}
 }
+
+function toggleUnfoldedView(){
+	var unfoldedContents = document.getElementById('unfoldedContents');
+	var unfoldedView = document.getElementById('unfoldedView');
+	var toggleUnfolded = document.getElementById('toggleUnfolded');
+	if(unfoldedContents.style.display == 'none'){
+		unfoldedContents.style.display = 'block';
+		unfoldedView.style.height = '255px';
+		toggleUnfolded.style.marginTop = '10px';
+	}
+	else{
+		unfoldedContents.style.display = 'none';
+		unfoldedView.style.height = '0';
+		toggleUnfolded.style.marginTop = '0';
+	}
+		
+}
