@@ -65,7 +65,8 @@ Part.prototype.getLabel = function(face){
 	return label;
 }
 
-Part.prototype.getAllLabels = function(){
+Part.prototype.getAllLabels = function(nonBlank){
+	var all = nonBlank || true;
 	var labels = [];
 		labels.push(this.up);
 		labels.push(this.down);
@@ -73,6 +74,13 @@ Part.prototype.getAllLabels = function(){
 		labels.push(this.back);
 		labels.push(this.left);
 		labels.push(this.right);
+	if(!all){
+		for(var l = 0; l < labels.length; l++){
+			if(labels[l].color == 'blank'){
+				labels.slice(l, 1);
+			}
+		}
+	}
 	return labels;
 }
 

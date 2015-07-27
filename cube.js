@@ -128,6 +128,15 @@ Cube.prototype.getBorders = function(face){
 	return borders;
 }
 
+Cube.prototype.getBorderColors = function(face){
+	var borders = this.getBorders(face);
+	var borderColors = [];
+	for(var b = 0; b < borders.length; b++){
+		borderColors.push(this.getFaceColor(borders[b]));
+	}
+	return borderColors;
+}
+
 /*
 * Returns the face on the cube opposite the given face
 * var face (string): the face to select
